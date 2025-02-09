@@ -1,0 +1,25 @@
+<div class="app-component">
+  <app-navbar></app-navbar>
+  <app-content></app-content>
+  <div class="add-new">
+    <div class="add-new-block" [ngClass]="{ block: isVisible }">
+      <input
+        type="text"
+        class="add-new-block-input"
+        placeholder="Enter Group Name..."
+        name="name"
+        id="name"
+        [(ngModel)]="newGroupName"
+      />
+      <button class="add-button" (click)="addNewGroup()">+</button>
+      <button class="cancel-button" (click)="cancelVisible()">-</button>
+    </div>
+    <button
+      class="main-add-button"
+      (click)="isVisible = true"
+      [ngClass]="{ none: isVisible }"
+    >
+      +
+    </button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.app-component {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url(../../public/bg.jpg) center/cover no-repeat;
+  color: #fff;
+  position: relative;
+
+  .add-new {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .add-new-block {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+
+      &.block {
+        display: flex;
+      }
+
+      .add-new-block-input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 2px solid #fff;
+        padding: 5px 10px;
+        color: #fff;
+
+        &::placeholder {
+          color: #fff;
+          font-size: 13px;
+        }
+      }
+
+      .add-button {
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+      }
+
+      .cancel-button {
+        background: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+        margin-left: 10px;
+      }
+    }
+
+    .main-add-button {
+      padding: 10px 20px;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &.none {
+        display: none;
+      }
+    }
+  }
+}

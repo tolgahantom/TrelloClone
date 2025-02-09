@@ -1,0 +1,14 @@
+<div class="group">
+  <div class="top">
+    <div class="group-title">{{ group.title }}</div>
+    <div class="add-task-button">+</div>
+  </div>
+  <div class="tasks">
+    @for (task of taskList; track $index) {
+    <app-task [task]="task"></app-task>
+    }
+  </div>
+  <div class="bottom">
+    <div class="sort-tasks-button" (click)="addNewTask()">+</div>
+  </div>
+</div>
