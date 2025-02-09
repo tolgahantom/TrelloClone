@@ -1,0 +1,17 @@
+<div class="modal" [ngClass]="{ block: isvisible }">
+  <div class="modal-content">
+    <h2>Yeni Görev</h2>
+    <div class="modal-input">
+      <p>Görev Adı</p>
+      <input type="text" [(ngModel)]="title" />
+    </div>
+    <div class="modal-input">
+      <p>Durum</p>
+      <input type="text" [(ngModel)]="status" />
+    </div>
+    <div class="buttons">
+      <button (click)="addNewTask()">Ekle</button>
+      <button (click)="close()">İptal</button>
+    </div>
+  </div>
+</div>

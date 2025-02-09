@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskComponent } from '../task/task.component';
 import { Task } from '../../model/task.model';
 import { TaskService } from '../../services/task.service';
+import { ModalService } from '../../services/modal.service';
+import { GroupService } from '../../services/group.service';
 
 @Component({
   selector: 'app-group',
@@ -14,20 +16,23 @@ export class GroupComponent implements OnInit {
   @Input() group: any;
   taskList: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private modalService: ModalService,
+    private groupService: GroupService
+  ) {}
 
   ngOnInit(): void {
-    this.taskList = this.taskService.getAllTasks(this.group.id);
+    this.taskService.getAllTasks(this.group.id).subscribe((data) => {
+      this.taskList = data;
+    });
   }
 
   addNewTask() {
-    const newTask: Task = {
-      id: this.taskList.length + 1,
-      title: 'New Task',
-      statusId: 1,
-      groupId: this.group.id,
-    };
-    this.taskService.addNewTask(newTask);
-    this.taskList.push(newTask);
+    this.modalService.open(this.group.id);
+  }
+
+  deleteGroup() {
+    this.groupService.deleteGroup(this.group.id);
   }
 }

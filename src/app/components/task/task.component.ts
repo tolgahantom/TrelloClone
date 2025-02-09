@@ -10,4 +10,8 @@ import { Task } from '../../model/task.model';
 })
 export class TaskComponent {
   @Input() task: any;
+
+  constructor() {
+    console.log(this.task);
+  }
 }

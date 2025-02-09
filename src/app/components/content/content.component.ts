@@ -13,6 +13,6 @@ import { Group } from '../../model/group.model';
 export class ContentComponent {
   groups: Group[] = [];
   constructor(private groupService: GroupService) {
-    this.groups = this.groupService.getAllGroup();
+    this.groupService.getAllGroup().subscribe((data) => (this.groups = data));
   }
 }

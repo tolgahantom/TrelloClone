@@ -1,33 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../model/group.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { TaskService } from './task.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GroupService {
-  groupList: Group[] = [
-    {
-      id: 1,
-      title: 'Group 1',
-    },
-    {
-      id: 2,
-      title: 'Group 2',
-    },
-    {
-      id: 3,
-      title: 'Group 3',
-    },
-  ];
+  private groupList = new BehaviorSubject<Group[]>([
+    { id: 1, title: 'Group 1' },
+    { id: 2, title: 'Group 2' },
+    { id: 3, title: 'Group 3' },
+  ]);
 
-  constructor() {}
+  constructor(private taskService: TaskService) {}
 
-  getAllGroup() {
-    return this.groupList;
+  getAllGroup(): Observable<Group[]> {
+    return this.groupList.asObservable();
   }
 
   addNewGroup(group: Group) {
-    this.groupList.push(group);
-    console.log(this.groupList);
+    const updatedList = [...this.groupList.value, group];
+    this.groupList.next(updatedList);
+  }
+
+  deleteGroup(groupId: number) {
+    const updatedList = this.groupList.value.filter(
+      (group) => group.id !== groupId
+    );
+    this.groupList.next(updatedList);
+    this.taskService.deleteTasksByGroupId(groupId);
   }
 }

@@ -18,6 +18,18 @@
       font-weight: bold;
       text-transform: uppercase;
     }
+
+    .delete {
+      color: white;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: red;
+    }
   }
 
   .bottom {

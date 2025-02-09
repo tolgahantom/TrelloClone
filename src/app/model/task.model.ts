@@ -1,6 +1,6 @@
 export interface Task {
   id: number;
   title: string;
-  statusId: number;
+  status: string;
   groupId: number;
 }
