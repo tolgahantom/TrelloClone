@@ -7,7 +7,15 @@
     </div>
     <div class="modal-input">
       <p>Durum</p>
-      <input type="text" [(ngModel)]="status" />
+      <select [(ngModel)]="selectedStatusId">
+        <option value="-1" disabled>Durum Seçiniz...</option>
+        <option
+          *ngFor="let status of statusList; track: $index"
+          [value]="status.id"
+        >
+          {{ status.title }}
+        </option>
+      </select>
     </div>
     <div class="buttons">
       <button (click)="addNewTask()">Ekle</button>

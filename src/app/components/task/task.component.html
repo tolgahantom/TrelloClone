@@ -1,7 +1,7 @@
 <div class="task">
   <div class="delete-task" (click)="deleteTask(this.task.id)">X</div>
   <div class="task-status" (click)="updateStatusId(this.task.id)">
-    {{ this.status[this.task.statusId]?.title }}
+    {{ getStatus(this.task.statusId) }}
   </div>
   <div class="task-title">{{ this.task.title }}</div>
 </div>

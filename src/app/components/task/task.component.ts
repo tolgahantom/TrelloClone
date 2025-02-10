@@ -30,4 +30,8 @@ export class TaskComponent {
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
   }
+
+  getStatus(id: number) {
+    return this.status.find((item) => item.id === id).title;
+  }
 }

@@ -25,6 +25,17 @@
     align-items: center;
     gap: 25px;
 
+    .modal-input {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      select {
+        width: 70%;
+      }
+    }
+
     .buttons {
       display: flex;
       justify-content: center;
