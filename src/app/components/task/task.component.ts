@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Task } from '../../model/task.model';
+import { TaskService } from '../../services/task.service';
+import { StatusService } from '../../services/status.service';
 
 @Component({
   selector: 'app-task',
@@ -10,8 +11,23 @@ import { Task } from '../../model/task.model';
 })
 export class TaskComponent {
   @Input() task: any;
+  status: any[] = [];
 
-  constructor() {
-    console.log(this.task);
+  constructor(
+    private taskService: TaskService,
+    private statusService: StatusService
+  ) {
+    this.statusService.getAllStatuses().subscribe((data) => {
+      this.status = data;
+      console.log(this.status);
+    });
+  }
+
+  updateStatusId(id: number) {
+    this.taskService.updateStatus(id);
+  }
+
+  deleteTask(id: number) {
+    this.taskService.deleteTask(id);
   }
 }

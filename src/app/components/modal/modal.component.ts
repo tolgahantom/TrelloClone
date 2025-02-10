@@ -35,7 +35,7 @@ export class ModalComponent {
     const task = {
       id: Date.now(),
       title: this.title,
-      status: this.status,
+      statusId: +this.status,
       groupId: this.groupId,
     };
 

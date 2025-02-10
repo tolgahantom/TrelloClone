@@ -23,8 +23,9 @@ export class GroupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.taskService.getAllTasks(this.group.id).subscribe((data) => {
-      this.taskList = data;
+    this.taskService.getAllTasks(this.group.id).subscribe((tasks) => {
+      console.log(tasks);
+      this.taskList = tasks;
     });
   }
 
